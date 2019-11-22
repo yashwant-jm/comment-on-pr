@@ -29,7 +29,7 @@ if !pr
   exit(1)
 end
 
-message = ARGV.join(' ')
+message = File.read(ARGV.join(''))
 
 coms = github.issue_comments(repo, pr["number"])
 duplicate = coms.find { |c| c["user"]["login"] == "github-actions[bot]" && c["body"] == message }
